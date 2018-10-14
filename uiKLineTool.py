@@ -3,17 +3,17 @@ import sip
 sip.setapi("QString", 2)
 sip.setapi("QVariant", 2)
 import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
+#reload(sys)
+#sys.setdefaultencoding('utf8')
 import os
 os.environ['QT_API'] = 'pyqt'
 from uiBasicIO import uiBasicIO
 from uiKLine import KLineWidget
 # PyQt
-from qtpy.QtGui import *
-from qtpy.QtWidgets import *
-from qtpy.QtCore import *
-from qtpy import QtGui,QtCore
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5 import QtGui,QtCore
 
 
 import pandas as pd
@@ -31,8 +31,8 @@ class uiKLineTool(uiBasicIO):
     def __init__(self,parent=None):
         """初始化函数"""
         super(uiKLineTool,self).__init__(parent,\
-                    'json\\uiKLine_input.json',\
-                    'json\\uiKLine_button.json')  # 输入配置文件,按钮配置文件
+                    'json/uiKLine_input.json',\
+                    'json/uiKLine_button.json')  # 输入配置文件,按钮配置文件
 
         # 用于计算因子的数据
         self.bars = []
@@ -67,7 +67,7 @@ class uiKLineTool(uiBasicIO):
             kTool.pwOI.removeItem(kTool.subSigPlots[sig])
         kTool.subSigData  = {}
         kTool.subSigPlots = {}
-        print u'正在准备回测结果数据....'
+        print (u'正在准备回测结果数据....')
         self.canvas.clearData()
         self.pdBars = data[['open','close','low','high','volume','openInterest']]
         self.canvas.loadData(self.pdBars)
@@ -77,7 +77,7 @@ class uiKLineTool(uiBasicIO):
         self.stateData = data[allState].to_records()
         self.editDict['signalName'].clear()
         self.editDict['signalName'].addItems(allState) 
-        print u'数据准备完成！'
+        print (u'数据准备完成！')
 
     #----------------------------------------------------------------------
     def initUi(self):
@@ -103,7 +103,7 @@ if __name__ == '__main__':
     cfgfile = QtCore.QFile('css.qss')
     cfgfile.open(QtCore.QFile.ReadOnly)
     styleSheet = cfgfile.readAll()
-    styleSheet = unicode(styleSheet, encoding='utf8')
+    styleSheet = str(styleSheet, encoding='utf8')
     app.setStyleSheet(styleSheet)
     # K线界面
     ui = uiKLineTool()

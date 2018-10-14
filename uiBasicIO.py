@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # PyQt
-from qtpy.QtGui import *
-from qtpy.QtWidgets import *
-from qtpy.QtCore import *
-from qtpy import QtGui,QtCore
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5 import QtGui,QtCore
 # Others
 import os
 import imp
@@ -19,7 +19,7 @@ ALL_FUNC_BUTTON = []
 funcBtnPath = os.getcwd() + '/func-button/'
 allPath = glob.glob(funcBtnPath+r'*.py')
 for path in allPath:
-    fileName  = path.split("\\")[-1]
+    fileName  = path.split("/")[-1]
     modelName = fileName.split(".")[0]
     ALL_FUNC_BUTTON.append(modelName)
     imp.load_source('ctaFuncButttons',path)
@@ -163,7 +163,7 @@ class uiBasicIO(QWidget):
             qcLabel.setFont(QtGui.QFont("Roman times",10,QtGui.QFont.Bold))
             gridup.addWidget(qcLabel, 0, classIndex,1,i-classIndex)
             # 分隔符
-            for j in xrange(0,3):
+            for j in range(0,3):
                 qcSplit = QLabel(u'|')
                 qcSplit.setAlignment(QtCore.Qt.AlignCenter)
                 gridup.addWidget(qcSplit, j, i)
@@ -190,7 +190,7 @@ class uiBasicIO(QWidget):
             qcLabel.setFont(QFont("Roman times",10,QtGui.QFont.Bold))
             griddown.addWidget(qcLabel, 0, classIndex,1,i-classIndex)
             # 分隔符
-            for j in xrange(0,2):
+            for j in range(0,2):
                 qcSplit = QLabel(u'|')
                 qcSplit.setAlignment(QtCore.Qt.AlignCenter)
                 griddown.addWidget(qcSplit, j, i)

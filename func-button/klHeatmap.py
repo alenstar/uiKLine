@@ -3,8 +3,9 @@
 插入所有需要的库，和函数
 """
 import numpy as np
-from ctaFunction.calcFunction import *
-from ctaFunction.visFunction import *
+from ctaFunction import *
+#from ctaFunction.calcFunction import *
+#from ctaFunction.visFunction import *
 
 #----------------------------------------------------------------------
 def klHeatmap(self):
